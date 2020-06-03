@@ -1,0 +1,128 @@
+actions:
+- action_budget_check
+- action_check_location
+- action_search_restaurants
+- action_send_email
+- action_verify_cuisine
+- utter_ask_budget
+- utter_ask_cuisine
+- utter_ask_email_address
+- utter_ask_for_email_to_send
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_default
+- utter_email_sent
+- utter_goodbye
+- utter_greet
+- utter_invalid_budget
+- utter_invalid_cuisine
+- utter_location_notinoperation
+- utter_no_email_sent
+- utter_no_restuarants_found
+entities:
+- cuisine
+- email
+- location
+- price
+intents:
+- emailid_confirm
+- affirm
+- restaurant_search
+- greet
+- deny
+- goodbye
+responses:
+  utter_ask_budget:
+  - buttons:
+    - payload: low
+      title: Lesser than Rs. 300
+    - payload: medium
+      title: Rs. 300 to Rs. 700
+    - payload: high
+      title: More than Rs. 700
+    text: What's the average budget for two people?
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Italian
+      title: Italian
+    - payload: Mexican
+      title: Mexican
+    - payload: American
+      title: American
+    - payload: South Indian
+      title: South Indian
+    - payload: North Indian
+      title: North Indian
+    text: What kind of cuisine would you like?
+  utter_ask_email_address:
+  - text: To what email id should I send it to?
+  utter_ask_for_email_to_send:
+  - text: Should I send you details of all the restaurants on email?
+  utter_ask_howcanhelp:
+  - text: how can I help you?
+  utter_ask_location:
+  - text: In what location?
+  utter_default:
+  - text: i cannot understand
+  utter_email_sent:
+  - text: Sent. Bon Appetit!
+  utter_goodbye:
+  - text: Goodbye
+  - text: Bye-bye
+  utter_greet:
+  - text: hey there! How may i help you
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going. How May I help you Today
+  utter_invalid_budget:
+  - text: Sorry, This is not a valid price range. Please enter again.
+  utter_invalid_cuisine:
+  - text: Sorry,the cuisine is not supported.Please enter from the above mentioned
+      list
+  utter_location_notinoperation:
+  - text: Sorry, we don’t operate in this city. Can you please specify some other
+      location
+  utter_no_email_sent:
+  - text: Okay. Bon Appetit!
+  utter_no_restuarants_found:
+  - text: Sorry, We did not find any results for the selected criteria
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 0
+slots:
+  budgetmax:
+    initial_value: 1.0
+    max_value: 100000.0
+    min_value: 0.0
+    type: float
+  budgetmin:
+    initial_value: 0.0
+    max_value: 700.0
+    min_value: 0.0
+    type: float
+  cuisine:
+    type: text
+  cuisine_valid:
+    initial_value: false
+    type: bool
+  email:
+    type: text
+  emailbody:
+    type: text
+  location:
+    type: text
+  location_match:
+    type: categorical
+    values:
+    - zero
+    - one
+    - __other__
+  price:
+    type: text
+  restaurant_found:
+    initial_value: false
+    type: bool
+  withinbudget:
+    initial_value: false
+    type: bool
